@@ -33,6 +33,10 @@ jobs:
         git config --global user.email "update.bot@nosuchmail.nonexistantaddress"
         git config --global user.name "Update Bot"
         
-        git add -A
-        git commit -m "Update $(date -u +%Y-%m-%d)"
-        git push origin
+        if [[ "$(git status --porcelain)" != "" ]]; then
+          git add -A
+          git commit -m "Update $(date -u +%Y-%m-%d)"
+          git push origin
+        else
+          echo "No files to commit"
+        fi
