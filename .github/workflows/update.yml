@@ -18,5 +18,6 @@ jobs:
           curl -L https://gitlab.com/xvm/xvm/-/archive/master/xvm-master.zip?path=release/configs/default -o tmp.zip
           unzip tmp.zip
           rm tmp.zip
-          mv -v xvm-master-release-configs-default/release/configs/default .
+          mv -v xvm-master-release-configs-default/release/configs/default/* .
+          rm -r xvm-master-release-configs-default
           ls -lha
