@@ -1,0 +1,23 @@
+name: Updater
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#        with:
+#          repository: 'litetex/xvm_default_config'
+        
+      - name: Checkout code
+        run: |
+          curl -L https://gitlab.com/xvm/xvm/-/archive/master/xvm-master.zip?path=release/configs/default -o tmp.zip
+          unzip tmp.zip
+          rm tmp.zip
+          mv tmp/xvm-master-release-configs-default/release/configs/default .
+          rm -r tmp
+          ls -lha
