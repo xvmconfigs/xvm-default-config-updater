@@ -14,13 +14,15 @@ jobs:
         repository: 'litetex/xvm_default_config'
         token: ${{ secrets.PAT }}
 
-    - name: Checkout code
+    - name: Update
       run: |
+        rm -rf config
+        mkdir -p config
+        
         curl -L https://gitlab.com/xvm/xvm/-/archive/master/xvm-master.zip?path=release/configs/default -o tmp.zip
         unzip tmp.zip
         rm tmp.zip
-        mkdir -p config
-        rm -r config/*
+        
         mv -v xvm-master-release-configs-default/release/configs/default/* config/
         rm -r xvm-master-release-configs-default
         ls -lha
