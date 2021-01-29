@@ -8,16 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#        with:
-#          repository: 'litetex/xvm_default_config'
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: 'litetex/xvm_default_config'
         
       - name: Checkout code
         run: |
           curl -L https://gitlab.com/xvm/xvm/-/archive/master/xvm-master.zip?path=release/configs/default -o tmp.zip
           unzip tmp.zip
           rm tmp.zip
-          mv -v xvm-master-release-configs-default/release/configs/default/* .
+          mkdir -p config
+          mv -v xvm-master-release-configs-default/release/configs/default/* config/
           rm -r xvm-master-release-configs-default
-          ls -lha
+          ls -lha config
