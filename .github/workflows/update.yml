@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        repository: 'xvmconfigs/xvm_default_config'
+        repository: 'xvmconfigs/xvm-default-config'
         token: ${{ secrets.PAT }}
 
     - name: Update
