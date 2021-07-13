@@ -42,3 +42,36 @@ jobs:
         else
           echo "No files to commit"
         fi
+  
+  keep_alive:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Keep alive push
+      run: |
+        git config --global user.email "update.bot@nosuchmail1.nonexistantaddress"
+        git config --global user.name "Update Bot"
+        
+        git switch -C keep-alive
+        git push -u origin keep-alive
+        
+        date > test.txt
+        
+        if [[ "$(git status --porcelain)" != "" ]]; then
+          git add -A
+          git commit -m "Update $(date -u +%Y-%m-%d)"
+          git push -u origin keep-alive
+        else
+          echo "No files to commit"
+        fi
+        
+    - name: Keep alive rm
+      run: |
+        git config --global user.email "update.bot@nosuchmail2.nonexistantaddress"
+        git config --global user.name "Update Bot"
+        
+        git branch -D keep-alive || exit 0
+        git push origin --delete keep-alive || exit 0
