@@ -21,7 +21,7 @@ jobs:
         rm -rf config
         mkdir -p config
         
-        curl -L https://gitlab.com/xvm/xvm/-/archive/master/xvm-master.zip?path=release/configs/default -o tmp.zip
+        curl -L https://gitlab.com/xvm/xvm/-/archive/master/xvm-master.zip?path=release/configs/default_wg -o tmp.zip
         unzip tmp.zip
         rm tmp.zip
         
