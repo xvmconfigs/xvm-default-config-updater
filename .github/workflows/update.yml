@@ -25,8 +25,8 @@ jobs:
         unzip tmp.zip
         rm tmp.zip
         
-        mv -v xvm-master-release-configs-default/release/configs/default_wg/* config/
-        rm -r xvm-master-release-configs-default
+        mv -v xvm-master-release-configs-default_wg/release/configs/default_wg/* config/
+        rm -r xvm-master-release-configs-default_wg
         ls -lha
         ls -lha config
 
